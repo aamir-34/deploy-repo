@@ -1,9 +1,10 @@
 name: Build and Deploy to GKE
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Build and Deploy to GCR"]
+    types:
+      - completed
 
 env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
