@@ -22,7 +22,13 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v2
-
+        
+      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+          owner: aamir-34
+          repo: build-repo
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          workflow_file_name: pipeline.yaml
       - name: Setup Google Cloud CLI
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.3
         env:
